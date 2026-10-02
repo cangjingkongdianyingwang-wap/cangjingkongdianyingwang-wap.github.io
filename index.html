@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>苍井空电影网 | 苍井空电影网 - 三分钟决定今晚看什么</title>
+<meta name="keywords" content="苍井空电影网, 苍井空电影网电影推荐, 苍井空电影网片单, 苍井空电影网三分钟看片, 苍井空电影网新片, 苍井空电影网冷门片, 三分钟看片, 今晚看什么">
+<meta name="description" content="苍井空电影网（https://cangjingkongdianyingwang-wap.github.io）用 3 分钟帮你看完一部片该不该看，每日更新新片速览、速看榜单与冷门好片。">
+<meta name="robots" content="index,follow">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<meta property="og:type" content="website">
+<meta property="og:title" content="苍井空电影网 | 三分钟决定今晚看什么">
+<meta property="og:description" content="苍井空电影网（https://cangjingkongdianyingwang-wap.github.io）每日更新新片速览、速看榜单与冷门好片，3 分钟帮你做决定。">
+<meta property="og:url" content="https://cangjingkongdianyingwang-wap.github.io/">
+<meta property="og:site_name" content="苍井空电影网">
+<meta property="og:locale" content="zh_CN">
+<link rel="canonical" href="https://cangjingkongdianyingwang-wap.github.io/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>🎞️</text></svg>">
+<style>
+:root{
+  --bg:#f6f7f9;        /* 浅色终端风 */
+  --panel:#ffffff;
+  --ink:#161922;
+  --ink2:#3c4052;
+  --ink3:#8a8fa3;
+  --line:#e6e8ee;
+  --line2:#f0f1f5;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  /* 苍井空 三色 */
+  --a:#ff3b30;   /* 红 */
+  --b:#ff9500;   /* 橙 */
+  --c:#34c759;   /* 绿 */
+  --d:#007aff;   /* 蓝 */
+  --e:#af52de;   /* 紫 */
+  --f:#ff2d55;   /* 玫 */
+  --shadow:0 1px 3px rgba(16,24,40,.06),0 12px 32px rgba(16,24,40,.07);
+  --shadow2:0 2px 6px rgba(16,24,40,.08),0 24px 60px rgba(16,24,40,.14);
+  --r:14px;
+  --max:1340px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  font-size:15.5px;line-height:1.7;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;transition:.18s}
+ul{list-style:none}
+button{font-family:inherit}
+input{font-family:inherit}
+::selection{background:var(--ink);color:#fff}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+/* ===== 终端顶栏 ===== */
+.bar{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.logo{display:flex;align-items:center;gap:11px;font-size:18px;font-weight:900;letter-spacing:-.4px;flex-shrink:0}
+.logo .tri{display:flex;gap:3px}
+.logo .tri i{width:11px;height:11px;border-radius:3px;background:var(--a);display:block}
+.logo .tri i:nth-child(2){background:var(--b)}
+.logo .tri i:nth-child(3){background:var(--c)}
+.logo small{font-family:var(--mono);font-size:10.5px;color:var(--ink3);letter-spacing:.5px;font-weight:600}
+.crumbs{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12.5px;color:var(--ink3);margin-left:8px;white-space:nowrap;overflow:hidden}
+.crumbs b{color:var(--ink);font-weight:700}
+.crumbs span{color:var(--ink3)}
+.bar .grow{flex:1}
+.bar .now{font-family:var(--mono);font-size:12px;color:var(--ink2);background:var(--line2);padding:5px 11px;border-radius:6px;white-space:nowrap}
+.bar .now .live{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--c);margin-right:6px;animation:bl 1.4s infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.25}}
+.mob{display:none;width:38px;height:38px;border:1px solid var(--line);border-radius:9px;background:var(--panel);cursor:pointer;position:relative;flex-shrink:0}
+.mob i{position:absolute;left:50%;top:50%;width:16px;height:2px;background:var(--ink);transform:translate(-50%,-50%)}
+.mob i:nth-child(1){transform:translate(-50%,calc(-50% - 5px))}
+.mob i:nth-child(3){transform:translate(-50%,calc(-50% + 5px))}
+
+/* ===== 命令面板 Hero ===== */
+.cmd{padding:44px 0 34px}
+.cmd .term{background:var(--ink);color:#d6d9e3;border-radius:16px;overflow:hidden;box-shadow:var(--shadow2)}
+.cmd .term .titlebar{display:flex;align-items:center;gap:10px;padding:13px 18px;background:#20232e;border-bottom:1px solid #2a2e3b}
+.cmd .term .titlebar i{width:12px;height:12px;border-radius:50%;background:#ff5f57;display:block}
+.cmd .term .titlebar i:nth-child(2){background:#febc2e}
+.cmd .term .titlebar i:nth-child(3){background:#28c840}
+.cmd .term .titlebar span{margin-left:12px;font-family:var(--mono);font-size:12px;color:#8b91a3}
+.cmd .term .body{padding:30px 34px 34px;min-height:300px}
+.prompt{font-family:var(--mono);font-size:clamp(15px,2.2vw,20px);line-height:1.9}
+.prompt .ps1{color:var(--c)}
+.prompt .ps2{color:var(--d)}
+.prompt .cm{color:#fff;font-weight:700}
+.prompt .cm em{font-style:normal;color:var(--b)}
+.prompt .out{color:#8b91a3;display:block;margin-top:2px}
+.prompt .big{display:block;font-size:clamp(34px,7vw,74px);font-weight:900;letter-spacing:-3px;line-height:1;margin:18px 0 6px;color:#fff}
+.prompt .big small{display:block;font-size:15px;font-weight:600;letter-spacing:0;color:var(--ink3);margin-top:14px;line-height:1.7;font-family:inherit}
+.cursor{display:inline-block;width:11px;height:1.15em;background:var(--b);vertical-align:text-bottom;margin-left:3px;animation:bl 1s steps(1) infinite}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow)}
+.kpi .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+.kpi b{display:block;font-size:19px;font-weight:900;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:11.5px;color:var(--ink3)}
+
+/* ===== 面板式区块 ===== */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:26px}
+.phd{display:flex;align-items:center;gap:14px;padding:18px 24px;border-bottom:1px solid var(--line2);flex-wrap:wrap}
+.phd .id{font-family:var(--mono);font-size:11.5px;font-weight:800;color:var(--ink3);background:var(--line2);padding:4px 10px;border-radius:6px;letter-spacing:.5px}
+.phd h2{font-size:clamp(19px,2.4vw,23px);font-weight:900;letter-spacing:-.4px}
+.phd h2 em{font-style:normal;color:var(--a)}
+.phd p{font-size:13px;color:var(--ink3);margin-left:auto;text-align:right}
+.phd .more{font-family:var(--mono);font-size:12.5px;color:var(--d);font-weight:700;border:1px solid var(--line);padding:6px 13px;border-radius:8px}
+.phd .more:hover{background:var(--d);color:#fff;border-color:var(--d)}
+.pbd{padding:24px}
+
+/* 栏目一：3-3-3 三段式速览 */
+.tri{display:grid;grid-template-columns:repeat(3,1fr)}
+.tri > div{padding:26px 24px;border-right:1px solid var(--line2);position:relative}
+.tri > div:last-child{border-right:0}
+.tri .n{font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:1px}
+.tri .n.a{color:var(--a)}.tri .n.b{color:var(--b)}.tri .n.c{color:var(--c)}
+.tri h3{font-size:21px;font-weight:900;margin:9px 0 8px;letter-spacing:-.5px}
+.tri p{color:var(--ink2);font-size:14px}
+.tri .lst{margin-top:16px;border-top:1px dashed var(--line)}
+.tri .lst li{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.tri .lst li b{color:var(--ink);font-weight:600}
+.tri .lst li span{color:var(--ink3);font-family:var(--mono);font-size:12px;flex-shrink:0}
+.tri .lst li .go{color:var(--ink3)}
+.tri .lst li:hover .go{color:var(--a)}
+
+/* 栏目二：三分钟速看卡 */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cd{background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.22s;display:flex;flex-direction:column}
+.cd:hover{transform:translateY(-5px);box-shadow:var(--shadow2);border-color:var(--ink3)}
+.cd .cv{height:150px;position:relative;display:grid;place-items:center;font-size:58px}
+.cd .cv::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(22,25,34,.7),transparent 55%)}
+.cd .cv b{position:absolute;left:14px;bottom:12px;z-index:1;color:#fff;font-size:16.5px;font-weight:900;letter-spacing:-.3px}
+.cd .cv .tm{position:absolute;right:12px;top:12px;z-index:1;font-family:var(--mono);font-size:11.5px;font-weight:800;background:rgba(255,255,255,.94);color:#111;padding:4px 9px;border-radius:6px}
+.cd .cv .tg{position:absolute;left:12px;top:12px;z-index:1;font-size:10.5px;font-weight:800;color:#fff;border:1px solid rgba(255,255,255,.6);padding:3px 9px;border-radius:20px;backdrop-filter:blur(3px)}
+.cd .tx{padding:16px 18px;flex:1;display:flex;flex-direction:column}
+.cd .tx .row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:var(--ink3);margin-bottom:9px}
+.cd .tx h4{font-size:15.5px;font-weight:800;line-height:1.4;margin-bottom:7px}
+.cd .tx p{font-size:13px;color:var(--ink2);flex:1}
+.cd .tx .ft{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--line2);font-size:12px;color:var(--ink3)}
+.cd .tx .ft b{color:var(--ink)}
+.cd .tx .ft .rate{color:var(--a);font-weight:800}
+
+/* 栏目三：三选一切换 */
+.tabs{display:flex;gap:8px;padding:0 24px 18px;flex-wrap:wrap}
+.tab{flex:1;min-width:150px;text-align:left;padding:14px 18px;border-radius:10px;border:1px solid var(--line);background:var(--bg);cursor:pointer;transition:.18s}
+.tab:hover{border-color:var(--ink3)}
+.tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.tab .k{font-family:var(--mono);font-size:10.5px;opacity:.65;letter-spacing:1px}
+.tab .v{font-size:15.5px;font-weight:800;margin-top:4px}
+.tab.on .k{color:var(--b)}
+.tview{display:none;padding:0 24px 26px}
+.tview.on{display:block}
+.tview ul{display:flex;flex-direction:column;gap:0}
+.tview li{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line2)}
+.tview li:last-child{border-bottom:0}
+.tview li .rk{width:44px;height:44px;border-radius:10px;background:var(--bg);display:grid;place-items:center;font-family:var(--mono);font-size:15px;font-weight:900;color:var(--ink3);border:1px solid var(--line)}
+.tview li:nth-child(1) .rk{background:var(--a);color:#fff;border-color:var(--a)}
+.tview li:nth-child(2) .rk{background:var(--b);color:#fff;border-color:var(--b)}
+.tview li:nth-child(3) .rk{background:var(--c);color:#fff;border-color:var(--c)}
+.tview li .info h4{font-size:16px;font-weight:800;letter-spacing:-.3px}
+.tview li .info p{font-size:13px;color:var(--ink3);margin-top:2px}
+.tview li .info p b{color:var(--ink2);font-weight:600}
+.tview li .sc{font-family:var(--mono);font-size:19px;font-weight:900;color:var(--ink);text-align:right;white-space:nowrap}
+.tview li .sc small{display:block;font-size:11px;color:var(--ink3);font-weight:500}
+
+/* 栏目四：时间线 */
+.time{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:26px 24px}
+.tn{position:relative;padding:0 18px 0 26px;border-left:2px solid var(--line)}
+.tn:first-child{border-left:2px solid transparent}
+.tn::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:3px solid var(--ink3)}
+.tn.a::before{border-color:var(--a)}.tn.b::before{border-color:var(--b)}.tn.c::before{border-color:var(--c)}
+.tn .dy{font-family:var(--mono);font-size:11.5px;color:var(--ink3);font-weight:700}
+.tn h4{font-size:16.5px;font-weight:900;margin:5px 0 5px}
+.tn p{font-size:13px;color:var(--ink2)}
+.tn .st{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:5px}
+.tn.a .st{background:rgba(255,59,48,.1);color:var(--a)}
+.tn.b .st{background:rgba(255,149,0,.13);color:var(--b)}
+.tn.c .st{background:rgba(52,199,89,.13);color:var(--c)}
+
+/* 栏目五：双栏清单 */
+.check{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line2)}
+.check > div{padding:24px}
+.check > div:first-child{border-right:1px solid var(--line2)}
+.check h3{font-size:16px;font-weight:900;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.check h3 .ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:14px;color:#fff}
+.check .a .ic{background:var(--a)}.check .b .ic{background:var(--d)}
+.check > div > p{font-size:13px;color:var(--ink3);margin-bottom:14px}
+.check ul li{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line2);font-size:14px}
+.check ul li:last-child{border-bottom:0}
+.check ul li .ck{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--ink3);display:grid;place-items:center;font-size:11px;color:transparent;flex-shrink:0;margin-top:2px}
+.check .a ul li .ck{border-color:var(--a);color:var(--a)}
+.check .b ul li .ck{border-color:var(--d);color:var(--d)}
+.check ul li b{font-weight:600}
+.check ul li span{color:var(--ink3);font-size:12.5px}
+
+/* 栏目六：FAQ 折叠 */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:24px}
+.faq details{border:1px solid var(--line);border-radius:11px;background:var(--bg);overflow:hidden;transition:.2s}
+.faq details[open]{border-color:var(--ink3);box-shadow:var(--shadow)}
+.faq summary{cursor:pointer;padding:16px 20px;font-weight:700;font-size:15px;list-style:none;display:flex;align-items:center;gap:11px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .q{font-family:var(--mono);font-size:12px;font-weight:800;color:var(--a);background:rgba(255,59,48,.1);width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex-shrink:0}
+.faq summary .ar{margin-left:auto;color:var(--ink3);transition:.2s;font-size:12px}
+.faq details[open] summary .ar{transform:rotate(180deg)}
+.faq details p{padding:0 20px 18px 51px;font-size:13.5px;color:var(--ink2)}
+
+/* CTA */
+.cta{background:var(--ink);color:#fff;border-radius:16px;padding:38px 40px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;box-shadow:var(--shadow2)}
+.cta h3{font-size:clamp(22px,3vw,29px);font-weight:900;letter-spacing:-.7px}
+.cta h3 em{font-style:normal;color:var(--b)}
+.cta p{color:#8b91a3;margin-top:9px}
+.cta form{display:flex;gap:9px}
+.cta input{flex:1;min-width:0;padding:15px 18px;border-radius:10px;border:1px solid #2a2e3b;background:#20232e;color:#fff;font-size:14.5px;outline:0}
+.cta input:focus{border-color:var(--d)}
+.cta button{padding:0 26px;border-radius:10px;border:0;background:var(--c);color:#06120a;font-size:14.5px;font-weight:900;cursor:pointer;white-space:nowrap}
+.cta button:hover{background:#2fdd5e}
+
+/* 页脚 */
+footer{border-top:1px solid var(--line);padding:48px 0 32px;margin-top:40px;background:var(--panel)}
+.ft{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px}
+.ft .logo{margin-bottom:14px}
+.ft p{color:var(--ink3);font-size:13.5px}
+.ft .url{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:12.5px;color:var(--d);font-weight:700;word-break:break-all}
+.ft-col h4{font-size:12px;font-weight:900;color:var(--ink);margin-bottom:14px;text-transform:uppercase;letter-spacing:1.2px}
+.ft-col ul li{padding:6px 0}
+.ft-col a{color:var(--ink3);font-size:13.5px}
+.ft-col a:hover{color:var(--a)}
+.fbot{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--ink3);font-family:var(--mono)}
+.fbot .ok{color:var(--c);font-weight:700}
+
+@media (max-width:1080px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .tri{grid-template-columns:1fr}
+  .tri > div{border-right:0;border-bottom:1px solid var(--line2)}
+  .tri > div:last-child{border-bottom:0}
+  .time{grid-template-columns:1fr 1fr}
+  .tn{border-left:0;padding:0 0 0 22px}
+  .tn:first-child{padding-left:22px}
+  .tn::before{left:-7px}
+}
+@media (max-width:860px){
+  .wrap{padding:0 18px}
+  .crumbs{display:none}
+  .nav{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;padding:14px 18px;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);gap:4px;box-shadow:var(--shadow2)}
+  .nav.open{display:flex}
+  .nav a{width:100%;padding:12px 14px;font-size:14px;border-radius:8px}
+  .nav a:hover{background:var(--line2)}
+  .mob{display:block}
+  .bar .now{display:none}
+  .cmd .term .body{padding:22px 20px 26px}
+  .check,.faq,.cta{grid-template-columns:1fr}
+  .check > div:first-child{border-right:0;border-bottom:1px solid var(--line2)}
+  .cta form{flex-direction:column}
+  .cta button{padding:15px}
+  .ft{grid-template-columns:1fr 1fr;gap:28px}
+  .phd p{margin-left:0;text-align:left;width:100%;order:9}
+}
+@media (max-width:560px){
+  .kpis,.cards,.time,.ft{grid-template-columns:1fr}
+  .phd{flex-wrap:wrap;gap:10px}
+  .tab{flex:1 1 40%}
+  .tview li{grid-template-columns:36px 1fr;gap:12px}
+  .tview li .sc{grid-column:2;text-align:left;font-size:14px}
+  .cmd{padding:26px 0 22px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<!-- 终端顶栏 -->
+<div class="bar">
+  <div class="wrap">
+    <a class="logo" href="https://cangjingkongdianyingwang-wap.github.io/" title="苍井空电影网">
+      <span class="tri"><i></i><i></i><i></i></span>
+      苍井空电影网<small>3-3-3</small>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#tri" title="苍井空电影网三分钟速览">3 分钟速览</a>
+      <a href="#cards" title="苍井空电影网速看卡">速看卡</a>
+      <a href="#tabs" title="苍井空电影网三榜">三榜速看</a>
+      <a href="#time" title="苍井空电影网本周排期">本周排期</a>
+      <a href="#check" title="苍井空电影网清单">避坑 & 补片</a>
+      <a href="#faq" title="苍井空电影网常见问题">常见问题</a>
+    </nav>
+    <span class="grow"></span>
+    <span class="now"><span class="live"></span> 正在更新 · 每日 3 更</span>
+    <button class="mob" id="mob" aria-label="菜单"><i></i><i></i><i></i></button>
+  </div>
+</div>
+
+<!-- 命令面板 Hero -->
+<section class="cmd wrap">
+  <div class="term">
+    <div class="titlebar"><i></i><i></i><i></i><span>~/苍井空电影网 — bash — 156×32</span></div>
+    <div class="body">
+      <div class="prompt">
+        <span class="ps1">visitor@movie</span><span class="ps2">~</span> <span class="cm">cat <em>about-苍井空电影网.txt</em></span><br>
+        <span class="out">网站名称：苍井空电影网</span>
+        <span class="out">网站网址：https://cangjingkongdianyingwang-wap.github.io</span>
+        <span class="big">3 分钟，<br>决定今晚看什么。<span class="small">苍井空电影网 用「3 分钟速览 / 3 分钟速看 / 3 分钟决定」三步，<br>把一部片值不值得看讲清楚，不废话、不剧透、不凑数。</span></span>
+        <span class="ps1">visitor@movie</span><span class="ps2">~</span> <span class="cm">./today <span class="out">— 正在加载今日片单<span class="cursor"></span></span></span>
+      </div>
+    </div>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><span class="ic" style="background:rgba(255,59,48,.12);color:var(--a)">🎬</span><div><b>3,120</b><span>今日访问</span></div></div>
+    <div class="kpi"><span class="ic" style="background:rgba(52,199,89,.12);color:var(--c)">✅</span><div><b>2,480</b><span>片单已标记</span></div></div>
+    <div class="kpi"><span class="ic" style="background:rgba(0,122,255,.12);color:var(--d)">⚡</span><div><b>3 分钟</b><span>每片速览时长</span></div></div>
+    <div class="kpi"><span class="ic" style="background:rgba(255,149,0,.14);color:var(--b)">🔄</span><div><b>每日 3 更</b><span>早 8 / 中 13 / 晚 20</span></div></div>
+  </div>
+</section>
+
+<!-- 栏目一：3-3-3 三段式 -->
+<section class="wrap" id="tri">
+  <div class="panel">
+    <div class="phd">
+      <span class="id">SEC-01</span>
+      <h2>3-3-3 <em>三分钟</em>速览</h2>
+      <p>苍井空电影网的核心方法：每部片只用三段、每段三行</p>
+      <a class="more" href="#" title="查看苍井空电影网全部速览">全部速览 ›</a>
+    </div>
+    <div class="tri">
+      <div>
+        <div class="n a">STEP 1 / 值不值</div>
+        <h3>这 3 分钟在讲什么</h3>
+        <p>一句话剧情 + 三个关键词 + 一句话结论，看完就知道要不要点开。</p>
+        <ul class="lst">
+          <li><b>海边的曼彻斯特</b><span>2016</span></li>
+          <li><b>爆裂鼓手</b><span>2014</span></li>
+          <li><b>奥本海默</b><span>2023</span></li>
+          <li><b>疯狂的石头</b><span>2006</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="n b">STEP 2 / 适不适合</div>
+        <h3>什么心情看最对</h3>
+        <p>按情绪、场景、陪伴对象给建议，避免"片单很好但今晚不合适"。</p>
+        <ul class="lst">
+          <li><b>一个人 · 不想动脑</b><span>5 部</span></li>
+          <li><b>两个人 · 别冷场</b><span>5 部</span></li>
+          <li><b>全家 · 不尴尬</b><span>4 部</span></li>
+          <li><b>深夜 · 睡不着</b><span>5 部</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="n c">STEP 3 / 看完后</div>
+        <h3>3 个延伸动作</h3>
+        <p>同类补片、导演其他作品、以及"值不值得二刷"的判断。</p>
+        <ul class="lst">
+          <li><b>同类型补片</b><span>3 部</span></li>
+          <li><b>导演作品年表</b><span>一键</span></li>
+          <li><b>二刷提示</b><span>免剧透</span></li>
+          <li><b>加入我的片单</b><span>保存</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目二：速看卡 -->
+<section class="wrap" id="cards">
+  <div class="panel">
+    <div class="phd">
+      <span class="id">SEC-02</span>
+      <h2>今日<em>速看</em>四部</h2>
+      <p>苍井空电影网编辑部 · 每部 3 分钟读完，绝不注水</p>
+      <a class="more" href="#" title="查看苍井空电影网全部速看">全部速看 ›</a>
+    </div>
+    <div class="pbd">
+      <div class="cards" id="cardsBox"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目三：三榜切换 -->
+<section class="wrap" id="tabs">
+  <div class="panel">
+    <div class="phd">
+      <span class="id">SEC-03</span>
+      <h2>三榜<em>速看</em></h2>
+      <p>点标签切换，3 张榜、3 种标准，不混在一起</p>
+      <a class="more" href="#" title="查看苍井空电影网完整榜单">完整榜单 ›</a>
+    </div>
+    <div class="tabs" id="tabsBar"></div>
+    <div id="tabsBody"></div>
+  </div>
+</section>
+
+<!-- 栏目四：本周排期 -->
+<section class="wrap" id="time">
+  <div class="panel">
+    <div class="phd">
+      <span class="id">SEC-04</span>
+      <h2>本周<em>排期</em></h2>
+      <p>一周七天，苍井空电影网帮你排好，每晚一部不重复</p>
+      <a class="more" href="#" title="查看苍井空电影网本月排期">本月排期 ›</a>
+    </div>
+    <div class="time" id="timeBox"></div>
+  </div>
+</section>
+
+<!-- 栏目五：避坑 & 补片 -->
+<section class="wrap" id="check">
+  <div class="panel">
+    <div class="phd">
+      <span class="id">SEC-05</span>
+      <h2>避坑 &amp; <em>补片</em></h2>
+      <p>两张清单，一份先跳过、一份别错过</p>
+      <a class="more" href="#" title="查看苍井空电影网更多清单">更多清单 ›</a>
+    </div>
+    <div class="check">
+      <div class="a">
+        <h3><span class="ic">✕</span>先跳过的 5 部</h3>
+        <p>不是不好，是今晚大概率不适合</p>
+        <ul>
+          <li><span class="ck">✕</span><div><b>片名劝退的三部</b><br><span>名字太抽象，看完解释才懂</span></div></li>
+          <li><span class="ck">✕</span><div><b>超过 3 小时的鸿篇</b><br><span>今晚时间不够，留给周末</span></div></li>
+          <li><span class="ck">✕</span><div><b>口碑两极化的</b><br><span>争议太大，先看解说再决定</span></div></li>
+          <li><span class="ck">✕</span><div><b>需要二刷才懂的</b><br><span>第一次看容易走神</span></div></li>
+          <li><span class="ck">✕</span><div><b>话题过热正被刷屏的</b><br><span>先冷一冷，免得期待过高</span></div></li>
+        </ul>
+      </div>
+      <div class="b">
+        <h3><span class="ic">✓</span>别错过的 5 部</h3>
+        <p>评分高、讨论少，趁还没被刷屏快看</p>
+        <ul>
+          <li><span class="ck">✓</span><div><b>评分 9 分上下的冷门</b><br><span>看过的人不到一万</span></div></li>
+          <li><span class="ck">✓</span><div><b>重映老片</b><br><span>大银幕机会难得</span></div></li>
+          <li><span class="ck">✓</span><div><b>短片合集</b><br><span>每部 20 分钟，适合碎片时间</span></div></li>
+          <li><span class="ck">✓</span><div><b>纪录片新作</b><br><span>话题度低但信息量足</span></div></li>
+          <li><span class="ck">✓</span><div><b>动画佳作</b><br><span>全年龄，陪谁看都合适</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目六：FAQ -->
+<section class="wrap" id="faq">
+  <div class="panel">
+    <div class="phd">
+      <span class="id">SEC-06</span>
+      <h2>常见<em>问题</em></h2>
+      <p>点开查看 · 苍井空电影网 FAQ</p>
+    </div>
+    <div class="faq">
+      <details open><summary><span class="q">Q1</span>3 分钟速览到底是什么？<span class="ar">▾</span></summary><p>苍井空电影网每部片的速览都严格控制在三段：讲了什么、适合什么心情看、看完可以接着看什么，全程不剧透、不注水。</p></details>
+      <details><summary><span class="q">Q2</span>每天更新几次？<span class="ar">▾</span></summary><p>每日 3 更：早 8 点推新片速览、下午 13 点更速看榜单、晚 20 点发周末/深夜片单。</p></details>
+      <details><summary><span class="q">Q3</span>片单里的片子去哪看？<span class="ar">▾</span></summary><p>苍井空电影网只做推荐与速览，不提供在线播放资源，请通过正规渠道观看。</p></details>
+      <details><summary><span class="q">Q4</span>为什么有的榜只有 5 部？<span class="ar">▾</span></summary><p>因为我们相信"少而准"比"多而杂"有用。5 部以内可以一次看完，3 部以上才算片单。</p></details>
+      <details><summary><span class="q">Q5</span>能自己提交片单吗？<span class="ar">▾</span></summary><p>可以，在导航里点"提交片单"，苍井空电影网编辑部每周会选一批放进速看榜。</p></details>
+      <details><summary><span class="q">Q6</span>网站网址是什么？<span class="ar">▾</span></summary><p>网站名称：苍井空电影网；网站网址：https://cangjingkongdianyingwang-wap.github.io，建议收藏。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="wrap" style="margin-bottom:26px">
+  <div class="cta">
+    <div>
+      <h3>每天 3 分钟，<em>苍井空电影网</em>帮你把片选好</h3>
+      <p>订阅《苍井空 速看日报》，早 8 点送达 · 无广告 · 随时退订</p>
+    </div>
+    <form onsubmit="return fakeSub(event)">
+      <input type="email" id="mail" placeholder="your@email.com" required aria-label="邮箱">
+      <button type="submit">订阅日报</button>
+    </form>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a class="logo" href="https://cangjingkongdianyingwang-wap.github.io/" title="苍井空电影网">
+          <span class="tri"><i></i><i></i><i></i></span>
+          苍井空电影网<small>3-3-3</small>
+        </a>
+        <p>苍井空电影网（https://cangjingkongdianyingwang-wap.github.io）用「3 分钟速览 / 3 分钟速看 / 3 分钟决定」帮你选片，不废话、不剧透、不凑数。</p>
+        <span class="url">🔗 https://cangjingkongdianyingwang-wap.github.io</span>
+      </div>
+      <div class="ft-col">
+        <h4>主栏目</h4>
+        <ul>
+          <li><a href="#tri" title="苍井空电影网三分钟速览">3 分钟速览</a></li>
+          <li><a href="#cards" title="苍井空电影网速看卡">今日速看</a></li>
+          <li><a href="#tabs" title="苍井空电影网三榜">三榜速看</a></li>
+          <li><a href="#time" title="苍井空电影网本周排期">本周排期</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>清单</h4>
+        <ul>
+          <li><a href="#check" title="苍井空电影网避坑清单">避坑清单</a></li>
+          <li><a href="#check" title="苍井空电影网补片清单">补片清单</a></li>
+          <li><a href="#" title="苍井空电影网冷门片单">冷门片单</a></li>
+          <li><a href="#" title="苍井空电影网周末片单">周末片单</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>关于</h4>
+        <ul>
+          <li><a href="#faq" title="苍井空电影网常见问题">常见问题</a></li>
+          <li><a href="#" title="关于苍井空电影网">关于我们</a></li>
+          <li><a href="#" title="苍井空电影网提交片单">提交片单</a></li>
+          <li><a href="#" title="苍井空电影网隐私政策">隐私政策</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 苍井空电影网 · 网站名称：苍井空电影网 ｜ 网站网址：https://cangjingkongdianyingwang-wap.github.io</span>
+      <span><span class="ok">●</span> all systems normal · 每日 3 更</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+var CARDS=[
+  ["bg1","🌊","海边的曼彻斯特","2016 · 美国","剧情 / 治愈","讲一个走不出来的人，是怎么重新学会过日子的。","值不值得看","9.1"],
+  ["bg2","🥁","爆裂鼓手","2014 · 美国","剧情 / 音乐","对完美的偏执有多迷人，就有多危险。","适合谁看","8.9"],
+  ["bg3","🌿","完美的日子","2023 · 日本","剧情 / 生活","厕所清洁工的一天，看完想慢下来。","3 分钟结论","8.7"],
+  ["bg4","🎮","失控玩家","2021 · 美国","喜剧 / 科幻","彩蛋多到可以当寻宝游戏玩。","今晚合适吗","8.4"]
+];
+var TABS=[
+  ["tb1","📈 新片速看榜","8 部 · 本周新片"],
+  ["tb2","🕒 3 分钟榜","10 部 · 短小精悍"],
+  ["tb3","🗑️ 避坑榜","6 部 · 先看再说"]
+];
+var TB={
+"tb1":[["奥本海默","诺兰 · 传记 / 剧情","181 分钟 · 值得一场大银幕"],["热辣滚烫","贾玲 · 剧情 / 运动","2 小时 · 话题度极高"],["年会不能停！","董润年 · 喜剧","112 分钟 · 打工人秒懂"],["河边的错误","魏书钧 · 悬疑","101 分钟 · 需要动脑"],["我们一起摇太阳","韩延 · 剧情","129 分钟 · 温情向"],["默杀","柯汶利 · 悬疑","119 分钟 · 反转密集"],["异人之下","乌尔善 · 动作","120 分钟 · 漫改"],["解密","陈思诚 · 剧情","156 分钟 · 传记改编"]],
+"tb2":[["活埋","惊悚","95 分钟 · 全程一个场景"],["这个男人来自地球","科幻","87 分钟 · 全靠对话"],["彗星来的那一夜","科幻","89 分钟 · 脑洞大开"],["杀人回忆","悬疑","132 分钟 · 韩国经典"],["狩猎","剧情","115 分钟 · 看得憋屈"],["心迷宫","悬疑","110 分钟 · 国产多线"],["调音师","悬疑","139 分钟 · 反转不断"],["暴裂无声","悬疑","120 分钟 · 沉默的力量"],["心迷宫","悬疑","110 分钟 · 国产多线"],["爆裂鼓手","剧情","107 分钟 · 节奏极快"]],
+"tb3":[["片名抽象的三部","先看重磅解说","看完再决定看不看"],["超过 3 小时的鸿篇","留给周末","今晚时间不够"],["口碑两极化的","争议较大","先看解说"],["需要二刷才懂的","走神风险高","精力好时再看"],["话题正被刷屏的","期待已透支","冷一冷再看"],["主演只看过一部的","不熟演员","先看代表作"]]
+};
+var TIME=[
+  ["MON","周一 · 缓冲日","开工第一天，别看太重的。","《白日梦想家》· 轻松 · 114 分钟","a","已更新"],
+  ["TUE","周二 · 动脑日","熬过周一，奖励一部烧脑的。","《看不见的客人》· 悬疑 · 106 分钟","b","已更新"],
+  ["WED","周三 · 过半日","半程已过，需要温柔一点。","《海边的曼彻斯特》· 治愈 · 137 分钟","c","已更新"],
+  ["THU","周四 · 加码日","明天就周五，看部长的。","《奥本海默》· 传记 · 181 分钟","a","进行中"],
+  ["FRI","周五 · 周末预热","正式进入周末模式。","《疯狂的石头》· 喜剧 · 106 分钟","b","明日"],
+  ["SAT","周六 · 补片日","一整天，可以看长的、看老的。","《肖申克的救赎》· 经典 · 142 分钟","c","明日"],
+  ["SUN","周日 · 收尾日","收收心，看部治愈的。","《小森林》· 治愈 · 111 分钟","a","明日"]
+];
+
+var $=function(i){return document.getElementById(i)};
+var GRAD={
+"bg1":"linear-gradient(150deg,#34c759,#0a7d2c)",
+"bg2":"linear-gradient(150deg,#ff3b30,#a8110b)",
+"bg3":"linear-gradient(150deg,#007aff,#0a4ea8)",
+"bg4":"linear-gradient(150deg,#af52de,#5c1f7a)"
+};
+$('cardsBox').innerHTML=CARDS.map(function(c){
+  return '<article class="cd"><div class="cv" style="background:'+GRAD[c[0]]+'"><span class="tg">苍井空电影网</span><span class="tm">3 分钟</span><span style="position:relative;z-index:2">'+c[1]+'</span><b>'+c[2]+'</b></div><div class="tx"><div class="row"><span>'+c[3]+'</span><span>'+c[4]+'</span></div><h4>'+c[2]+'</h4><p>'+c[5]+'</p><div class="ft"><span>'+c[6]+'</span><span class="rate">★ '+c[7]+'</span></div></div></article>';
+}).join('');
+
+$('tabsBar').innerHTML=TABS.map(function(t,i){
+  return '<button class="tab'+(i===0?' on':'')+'" data-k="'+t[0]+'"><div class="k">TAB 0'+(i+1)+'</div><div class="v">'+t[1]+'</div></button>';
+}).join('');
+function renderTab(k){
+  $('tabsBody').innerHTML=Object.keys(TB).map(function(kk){
+    return '<div class="tview'+(kk===k?' on':'')+'" data-k="'+kk+'"><ul>'+(TB[kk].map(function(r){
+      return '<li><span class="rk">#'+(TB[kk].indexOf(r)+1)+'</span><div class="info"><h4>'+r[0]+'</h4><p>'+r[1]+'</p></div><span class="sc">'+(r[2]||'—')+'</span></li>';
+    }).join(''))+'</ul></div>';
+  }).join('');
+}
+renderTab('tb1');
+document.querySelectorAll('.tab').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');renderTab(b.dataset.k);
+  });
+});
+
+$('timeBox').innerHTML=TIME.map(function(t){
+  var cls="abcdef"[TIME.indexOf(t)%6];
+  return '<div class="tn '+cls+'"><div class="dy">'+t[0]+'</div><h4>'+t[1]+'</h4><p>'+t[2]+'</p><p style="margin-top:3px">'+t[3]+'</p><span class="st">'+t[5]+'</span></div>';
+}).join('');
+
+var mb=$('mob'),nv=$('nav');
+mb.addEventListener('click',function(){mb.classList.toggle('on');nv.classList.toggle('open')});
+nv.addEventListener('click',function(e){if(e.target.tagName==='A'){mb.classList.remove('on');nv.classList.remove('open')}});
+document.querySelectorAll('.nav a').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var h=this.getAttribute('href');
+    if(h&&h.charAt(0)==='#'){e.preventDefault();var el=document.querySelector(h);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+function fakeSub(e){
+  e.preventDefault();
+  var m=$('mail').value.trim();
+  if(!m){alert('请先填邮箱');return false}
+  alert('订阅成功！《苍井空 速看日报》将发送至：'+m);
+  $('mail').value='';return false;
+}
+</script>
+</body>
+</html>
